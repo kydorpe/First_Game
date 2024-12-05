@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -10,9 +10,15 @@ public class Player : MonoBehaviour
     private float initialSpeed;
     private Vector2 _direction;
     private bool _isRunning;
+    private bool _isRoling;
 
 
 
+    public bool isRoling
+    {
+        get { return _isRoling; }
+        set { _isRoling = value; }
+    }
 
     public Vector2 direction
     {
@@ -37,6 +43,8 @@ public class Player : MonoBehaviour
     {
         onInput();
         OnRun();
+        OnRoll();   
+        
     }
     private void FixedUpdate()
     {
@@ -63,11 +71,27 @@ public class Player : MonoBehaviour
         {
             speed = runSpeed;
             _isRunning = true;
+            
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = initialSpeed;
             _isRunning = false;
+        }
+
+    }
+
+    void OnRoll()
+    {
+        if(Input.GetMouseButtonDown(1))
+        {
+            _isRoling = true;
+           
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            _isRoling = false;
+           
         }
     }
 

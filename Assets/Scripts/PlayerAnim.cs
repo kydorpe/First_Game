@@ -7,6 +7,7 @@ public class PlayerAnim : MonoBehaviour
     private Player player;
     private Animator anim;
 
+
     private object transformer;
 
     private void Start()
@@ -28,7 +29,15 @@ public class PlayerAnim : MonoBehaviour
     {
         if (player.direction.sqrMagnitude > 0)
         {
-            anim.SetInteger("Transition", 1);
+            if (player.isRoling)
+            {
+                anim.SetTrigger("IsRoll");
+            }
+            else
+            {
+
+                anim.SetInteger("Transition", 1);
+            }
         }
         else
         {
