@@ -49,6 +49,7 @@ public class NPC_Dialogue : MonoBehaviour
         {
             playerHit = false;
             DialogueControl.instance.dialogueOBJ.SetActive(false);
+            
         }
     }
     private void OnDrawGizmosSelected()

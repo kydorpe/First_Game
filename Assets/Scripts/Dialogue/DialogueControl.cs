@@ -54,7 +54,22 @@ public class DialogueControl : MonoBehaviour
     // salto de frase // fala
     public void NextSentence()
     {
-
+        if (speechText.text == sentences[index])
+        {
+            if (index < sentences.Length - 1)
+            {
+                index++;
+                speechText.text = "";
+                StartCoroutine(TypeSentence());
+            }
+            else
+            {
+                speechText.text = "";
+                index = 0;
+                dialogueOBJ.SetActive(false);
+                sentences = null;
+            }
+        }
     }
 
     // inicia a fala do NPC
