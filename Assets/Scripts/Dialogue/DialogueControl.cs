@@ -5,20 +5,11 @@ using UnityEngine.UI;
 
 public class DialogueControl : MonoBehaviour
 {
-    [System.Serializable]
-    public enum idiom
-    {
-        pt,
-        eng
-    }
-    public idiom language;
-    
-    
-    [Header("Components")]   
+    [Header("Components")]
 
     public GameObject dialogueOBJ; // janela 
     public Image profileSprite;     // sprite perfil
-    private Text speechText; // texto fala
+    public Text speechText; // texto fala
     public Text actorNameText; // name NPC
 
     [Header("Settings")]
@@ -28,7 +19,7 @@ public class DialogueControl : MonoBehaviour
 
     // variaveis de controle
 
-   
+
     private bool isShowing; // está visivel?
     private int index; // leitor de quantidade 
     private string [] sentences;
@@ -36,9 +27,6 @@ public class DialogueControl : MonoBehaviour
 
     public static DialogueControl instance;
 
-    public bool IsShowing { get => isShowing; set => isShowing = value; }
-    public string[] Sentences { get => sentences; set => sentences = value; }
-    public Text SpeechText { get => speechText; set => speechText = value; }
 
     public void Awake ()
     {
@@ -56,9 +44,9 @@ public class DialogueControl : MonoBehaviour
 
     IEnumerator TypeSentence ()
     {
-        foreach (char letter in Sentences[index].ToCharArray())
+        foreach (char letter in sentences[index].ToCharArray())
         {
-            SpeechText.text += letter;
+            speechText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
     }
@@ -66,21 +54,20 @@ public class DialogueControl : MonoBehaviour
     // salto de frase // fala
     public void NextSentence()
     {
-        if (SpeechText.text == Sentences[index])
+        if (speechText.text == sentences[index])
         {
-            if (index < Sentences.Length - 1)
+            if (index < sentences.Length - 1)
             {
                 index++;
-                SpeechText.text = "";
+                speechText.text = "";
                 StartCoroutine(TypeSentence());
             }
             else
             {
-                SpeechText.text = "";
+                speechText.text = "";
                 index = 0;
                 dialogueOBJ.SetActive(false);
-                Sentences = null;
-                IsShowing = false;
+                sentences = null;
             }
         }
     }
@@ -88,12 +75,12 @@ public class DialogueControl : MonoBehaviour
     // inicia a fala do NPC
     public void Speech(string[] txt)
     {
-        if(!IsShowing)
+        if(!isShowing)
         {
             dialogueOBJ.SetActive(true);
-            Sentences = txt;
+            sentences = txt;
             StartCoroutine(TypeSentence());
-            IsShowing = true;
+            isShowing = true;
         }
         
     }

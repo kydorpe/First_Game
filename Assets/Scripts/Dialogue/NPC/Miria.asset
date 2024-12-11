@@ -20,9 +20,9 @@ MonoBehaviour:
     profile: {fileID: 0}
     sentence:
       portuguese: "Ol\xE1! Como voc\xEA est\xE1?"
-      english: Hello! How are you?
+      english: 
   - actorName: "Miri\xE3"
     profile: {fileID: 0}
     sentence:
       portuguese: "Voc\xEA est\xE1 lindo hoje!"
-      english: You are beatiful today!
+      english: 
