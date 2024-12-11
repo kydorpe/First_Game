@@ -68,6 +68,7 @@ public class DialogueControl : MonoBehaviour
                 index = 0;
                 dialogueOBJ.SetActive(false);
                 sentences = null;
+                isShowing = false;
             }
         }
     }
