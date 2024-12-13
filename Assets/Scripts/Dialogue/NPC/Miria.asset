@@ -20,7 +20,7 @@ MonoBehaviour:
     profile: {fileID: 0}
     sentence:
       portuguese: OLA, QUEM E VOCE?
-      english: 
+      english: HELLO, HOW ARE YOU?
   - actorName: "Miri\xE3"
     profile: {fileID: 0}
     sentence:
