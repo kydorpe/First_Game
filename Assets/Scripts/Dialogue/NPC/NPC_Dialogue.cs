@@ -1,6 +1,5 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 public class NPC_Dialogue : MonoBehaviour
@@ -9,15 +8,15 @@ public class NPC_Dialogue : MonoBehaviour
     public LayerMask playerLayer;
     public bool playerHit;
     public DialogueSettings dialogue;
-    private List <string> sentences = new List<string>();
-   
+    private List<string> sentences = new List<string>();
+
     void Start()
     {
         GetNPCInfo();
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)&&playerHit)
+        if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
             DialogueControl.instance.Speech(sentences.ToArray());
         }
@@ -27,7 +26,16 @@ public class NPC_Dialogue : MonoBehaviour
     {
         for (int i = 0; i < dialogue.dialogues.Count; i++)
         {
-            sentences.Add(dialogue.dialogues[i].sentence.portuguese);
+            switch (DialogueControl.instance.language)
+            {
+                case DialogueControl.idiom.PT:
+                    sentences.Add(dialogue.dialogues[i].sentence.portuguese);
+                    break;
+                case DialogueControl.idiom.ENG:
+                    sentences.Add(dialogue.dialogues[i].sentence.english);
+                        break;
+            }
+
         }
     }
 
@@ -49,7 +57,7 @@ public class NPC_Dialogue : MonoBehaviour
         {
             playerHit = false;
             DialogueControl.instance.dialogueOBJ.SetActive(false);
-            
+
         }
     }
     private void OnDrawGizmosSelected()

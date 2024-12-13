@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class DialogueControl : MonoBehaviour
 {
+    [System.Serializable]
+    public enum idiom
+    {
+        PT,
+        ENG
+
+    }
+
+    public idiom language;
+
     [Header("Components")]
 
     public GameObject dialogueOBJ; // janela 
