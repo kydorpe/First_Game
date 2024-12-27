@@ -1,4 +1,6 @@
- using UnityEngine;
+using System.Xml;
+using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class Player : MonoBehaviour
     private bool _isRunning;
     private bool _isRoling;
     private bool _isCuting;
+    private bool _isDiging;
+    private int handlingobj;
 
 
 
@@ -36,7 +40,12 @@ public class Player : MonoBehaviour
         get { return _isCuting; }
         set { _isCuting = value; }
     }
-  
+    public bool isDiging
+    {
+        get { return _isDiging; }
+        set { _isDiging = value; }
+    }
+
 
     private void Start()
     {
@@ -47,10 +56,41 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handlingobj = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) 
+        {
+            handlingobj = 2;
+
+        }
+        if (Input.GetKeyDown (KeyCode.Alpha0))
+        {
+            handlingobj = 0;
+        }
+
+        switch (handlingobj)
+        {
+
+            case 1:
+                OnCut(); 
+                break;
+            case 2:
+                onDig();
+                break;
+
+            default:
+                
+                break;
+        }
+
         onInput();
         OnRun();
         OnRoll();  
-        OnCut();
+       
         
     }
     private void FixedUpdate()
@@ -115,6 +155,19 @@ public class Player : MonoBehaviour
             _isCuting = false;
             speed = initialSpeed;
 
+        }
+    }
+    void onDig()
+    {
+        if(Input.GetMouseButtonDown (0))
+        {
+            _isDiging = true;
+            speed = 0;
+        }
+        if (Input.GetMouseButtonUp (0))
+        {
+            _isDiging = false;
+            speed = initialSpeed;
         }
     }
 
