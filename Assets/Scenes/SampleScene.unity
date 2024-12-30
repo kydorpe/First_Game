@@ -208,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170593661}
   - component: {fileID: 170593662}
+  - component: {fileID: 170593663}
   m_Layer: 0
   m_Name: Water R
   m_TagString: Untagged
@@ -276,6 +277,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 7.327188, y: 5.8567867}
   m_EdgeRadius: 0
+--- !u!114 &170593663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170593660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41260ce259a41f4aa6807c16fbb5212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectingPlayer: 0
 --- !u!1 &297163788
 GameObject:
   m_ObjectHideFlags: 0
@@ -25054,6 +25068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408139719}
   - component: {fileID: 1408139720}
+  - component: {fileID: 1408139721}
   m_Layer: 0
   m_Name: Water L
   m_TagString: Untagged
@@ -25122,6 +25137,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 6.881612, y: 5.9013433}
   m_EdgeRadius: 0
+--- !u!114 &1408139721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408139718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41260ce259a41f4aa6807c16fbb5212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectingPlayer: 0
 --- !u!1 &1417963374
 GameObject:
   m_ObjectHideFlags: 0
