@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private bool _isRoling;
     private bool _isCuting;
     private bool _isDiging;
+    private bool _isWatering;
     private int handlingobj;
 
 
@@ -45,6 +46,11 @@ public class Player : MonoBehaviour
         get { return _isDiging; }
         set { _isDiging = value; }
     }
+    public bool isWatering
+    {
+        get { return _isWatering; }
+        set { _isWatering = value; }
+    }
 
 
     private void Start()
@@ -71,6 +77,10 @@ public class Player : MonoBehaviour
         {
             handlingobj = 0;
         }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            handlingobj = 3;
+        }
 
         switch (handlingobj)
         {
@@ -80,6 +90,9 @@ public class Player : MonoBehaviour
                 break;
             case 2:
                 onDig();
+                break;
+            case 3:
+                onWatering();
                 break;
 
             default:
@@ -167,6 +180,19 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp (0))
         {
             _isDiging = false;
+            speed = initialSpeed;
+        }
+    }
+    void onWatering()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            _isWatering = true;
+            speed = 0;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            _isWatering = false;
             speed = initialSpeed;
         }
     }
